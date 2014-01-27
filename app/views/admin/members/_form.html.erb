@@ -1,0 +1,30 @@
+<%= form_for @member, :url => admin_member_path(@member) do |f| %>
+
+    <label for="member_name">Имя:</label>
+    <%= f.text_field :name %><br />
+
+    <label for="member_soname">Фамилия:</label>
+    <%= f.text_field :soname %><br />
+
+    <label for="member_age">Возраст:</label>
+    <%= f.text_field :age %><br />
+
+    <label for="member_city">Город:</label>
+    <%= f.text_field :city %><br />
+
+    <label for="member_country">Страна:</label>
+    <%= f.text_field :country %><br />
+
+    <label for="member_phone">Телефон:</label>
+    <%= f.text_field :phone %><br />
+
+    <label for="member_mail">Почта:</label>
+    <%= f.text_field :mail %><br />
+
+    <label for="member_win">Победитель:</label>
+    <%= f.text_field :win %><br />
+
+
+    <%= submit_tag "Submit" %>
+
+<% end %>

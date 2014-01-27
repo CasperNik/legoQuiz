@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+          xmlns:o="urn:schemas-microsoft-com:office:office"
+          xmlns:x="urn:schemas-microsoft-com:office:excel"
+          xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+          xmlns:html="http://www.w3.org/TR/REC-html40">
+  <Styles>
+    <ss:Style ss:ID="s1">
+      <Alignment ss:WrapText="1" />
+    </ss:Style>
+  </Styles>
+  <Worksheet ss:Name="Списки участников">
+    <Table>
+      <Row>
+        <Cell><Data ss:Type="String">ID</Data></Cell>
+        <Cell><Data ss:Type="String">Имя</Data></Cell>
+        <Cell><Data ss:Type="String">Фамилия</Data></Cell>
+        <Cell><Data ss:Type="String">Возраст</Data></Cell>
+        <Cell><Data ss:Type="String">Город</Data></Cell>
+        <Cell><Data ss:Type="String">Страна</Data></Cell>
+        <Cell><Data ss:Type="String">Телефон</Data></Cell>
+        <Cell><Data ss:Type="String">Почта</Data></Cell>
+        <Cell><Data ss:Type="String">Дата регистрации</Data></Cell>
+      </Row>
+      <% @members.each do |member| %>
+          <Row>
+            <Cell><Data ss:Type="Number"><%= member.id %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= member.name %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= member.soname %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= member.age %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= member.city %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= member.country %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= member.phone %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= member.mail %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= member.created_at.strftime("%B %d %Y ") %></Data></Cell>
+          </Row>
+      <% end %>
+    </Table>
+  </Worksheet>
+  <Worksheet ss:Name="Герои Чимы">
+    <Table>
+      <Column />
+      <Column ss:Width="600.00" ss:StyleID="s1"/>
+      <Row>
+        <Cell><Data ss:Type="String">ID участника</Data></Cell>
+        <Cell><Data ss:Type="String">Ответ</Data></Cell>
+      </Row>
+        <% @members_answ.each do |answ| %>
+      <Row>
+        <Cell><Data ss:Type="Number"><%= answ.member_id %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= answ.answer %></Data></Cell>
+      </Row>
+          <% end %>
+    </Table>
+
+  </Worksheet>
+
+</Workbook>

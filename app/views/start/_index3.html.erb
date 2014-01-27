@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="starter-template">
+    <div class="row">
+      <%= render :partial => 'welcome/menu' %>
+      <div class="col-md-8 col-lg-8">
+        <div class="block-main-small">
+          <h1>Спасибо за участие!</h1>
+          <div class="block-question">
+            <p class="mt10">Смотри «Легенды Чимы» на канале Nickelodeon в будни в 19.00 и по выходным в 16.00.</p>
+            <h2 class="mt30">расскажи друзьям</h2>
+            <script type="text/javascript">(function() {
+                if (window.pluso)if (typeof window.pluso.start == "function") return;
+                if (window.ifpluso==undefined) { window.ifpluso = 1;
+                    var d = document, s = d.createElement('script'), g = 'getElementsByTagName';
+                    s.type = 'text/javascript'; s.charset='UTF-8'; s.async = true;
+                    s.src = ('https:' == window.location.protocol ? 'https' : 'http')  + '://share.pluso.ru/pluso-like.js';
+                    var h=d[g]('body')[0];
+                    h.appendChild(s);
+                }})();</script>
+            <div class="pluso" data-background="transparent" data-options="big,round,line,horizontal,nocounter,theme=08" data-services="vkontakte,facebook,odnoklassniki,twitter"></div>
+          </div>
+          <div class="pull-left">
+            <div class="block-img-border">
+              <div class="img-border"></div>
+              <img src="/img/tmp2.png" alt="">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 col-lg-4">
+        <div class="block-right-part">
+          <div class="block-vk">
+            <script type="text/javascript" src="//vk.com/js/api/openapi.js?101"></script>
+            <div id="vk_groups"></div>
+            <script type="text/javascript">
+                VK.Widgets.Group("vk_groups", {mode: 0, width: "280", height: "500", color1: "#ccdb96", color2: "#5b6d48", color3: "#28345d"}, 22541528);
+            </script>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

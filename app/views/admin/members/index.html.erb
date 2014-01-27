@@ -1,0 +1,27 @@
+<ul class="nav nav-pills">
+<li><%= link_to 'На главную', admin_path %></li>
+<li><%= link_to 'Создать нового', new_admin_member_path %></li>
+<li><%= link_to 'Победители', admin_winers_path %></li>
+<li><%= link_to 'Выгрузить данные', admin_members_path(format: 'xls') %></li>
+</ul>
+<% if flash[:notice] %>
+    <div class="alert">
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+      <%= flash[:notice] %>
+    </div>
+<% end %>
+
+<% for member in @members %>
+    <div style="width: 240px; float: left;">
+    <%= link_to member.name, admin_member_path(member) %>
+    <%= member.soname %>
+    </div>
+    <div style="width: 200px; float: left;">
+    <%= member.created_at.strftime("%B %d, %Y at %l:%M %p") %>
+     </div>
+    <%= link_to 'Edit', edit_admin_member_path(member) %>
+
+    <br/>
+
+<% end %>
+<%= will_paginate @members %>

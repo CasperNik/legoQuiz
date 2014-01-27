@@ -1,0 +1,2 @@
+module Admin::WinersHelper
+end

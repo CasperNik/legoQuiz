@@ -1,0 +1,12 @@
+<% if flash[:notice] %>
+    <div class="notice"><%= flash[:notice] %></div>
+<% end %>
+
+<fieldset>
+  <legend>Добавить вопрос:</legend>
+
+  <%= render :partial => 'form' %>
+
+</fieldset>
+
+<%= link_to 'Вернуться', admin_mquestions_path %>

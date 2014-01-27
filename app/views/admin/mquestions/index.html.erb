@@ -1,0 +1,24 @@
+<ul class="nav nav-pills">
+  <li><%= link_to 'На главную', admin_path %></li>
+  <li><%= link_to 'Создать вопрос', new_admin_mquestion_path %></li>
+</ul>
+<% if flash[:notice] %>
+    <div class="alert">
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+      <%= flash[:notice] %>
+    </div>
+<% end %>
+<% for question in @questions %>
+
+    <div style="width: 500px; float: left;">
+      <%= link_to question.question, admin_mquestion_path(question) %>
+    </div>
+    <div style="width: 200px; float: left;">
+      <%= question.showdate%>
+    </div>
+    <%= link_to 'Редактировать', edit_admin_mquestion_path(question) %>
+
+    <br/>
+
+<% end %>
+

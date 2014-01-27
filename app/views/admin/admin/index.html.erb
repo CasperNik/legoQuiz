@@ -1,0 +1,29 @@
+<% if flash[:notice] %>
+    <div class="alert">
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+      <%= flash[:notice] %>
+    </div>
+<% end %>
+
+<ul class="nav nav-tabs">
+  <li class="active">
+     <a href="/">Главная</a>
+  </li>
+  <li><%= link_to 'Участники', admin_members_path %></li>
+  <li><%= link_to 'Вопросы на главной', admin_mquestions_path %></li>
+  <li><%= link_to 'Пользователи', admin_users_path %></li>
+  <li><%= link_to "Выйти", @application_session, :method => :delete %></li>
+</ul>
+
+<h5>Добро пожаловать <% if@user %><%= @user.name %><% end %> в панель администратора.</h5>
+
+<p>
+  Ваш IP адрес: <%= @info_ip %><br />
+  На сайте сейчаc: <%= @time.strftime("%B %d, %Y at %l:%M %p") %> (Московское время)
+</p>
+<p>
+  В викторине приняло участие <%= @mem_count %> человек(a).
+</p>
+
+
+

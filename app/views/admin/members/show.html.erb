@@ -1,0 +1,17 @@
+<p>
+    Имя: <%= @member.name %><br/>
+    Фамилия: <%= @member.soname %><br/>
+    Возраст: <%= @member.age %><br/>
+    Город: <%= @member.city %><br/>
+    Страна: <%= @member.country %><br/>
+    Телефон: <%= @member.phone %><br/>
+    Почта:  <%= @member.mail %><br/>
+    Выиграл:  <%= @member.win %><br/>
+    IP: <%= @member.ip %><br />
+    Дата создания:  <%= @member.created_at.strftime("%B %d, %Y at %l:%M %p") %><br/>
+    Дата редактирования: <%= @member.updated_at.strftime("%B %d, %Y at %l:%M %p") %><br/>
+</p>
+<p>
+<%= link_to 'Вернуться к списку', method: :get, action: :index %>
+</p>
+

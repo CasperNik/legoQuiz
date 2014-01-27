@@ -1,0 +1,19 @@
+<p>
+  Вопрос: <%= @question.question %><br/>
+  <br/>
+  Ответ 1: <%= @question.answer1 %><br/>
+  Ответ 2: <%= @question.answer2 %><br/>
+  Ответ 3: <%= @question.answer3 %><br/>
+  Ответ 4: <%= @question.answer4 %><br/>
+  Ответ 5: <%= @question.answer5 %><br/>
+  <br/>
+  Номер правильного ответа: <%= @question.rightanswer %><br/>
+  <br/>
+  Дата показа: <%= @question.showdate %><br/>
+  <br/>
+  Дата создания:  <%= @question.created_at.strftime("%B %d, %Y at %l:%M %p") %><br/>
+  Дата последнего редактирования: <%= @question.updated_at.strftime("%B %d, %Y at %l:%M %p") %><br/>
+</p>
+<p>
+  <%= link_to 'Вернуться к списку', method: :get, action: :index %>
+</p>

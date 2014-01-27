@@ -1,0 +1,1 @@
+Parameters: {"utf8"=>"✓", "authenticity_token"=>"m/UnOvYRZfrcVo8yle232NHVEfxNWkPMcjndN3xdr9A=", "admin_user"=>{"name"=>"", "password"=>"[FILTERED]"}, "commit"=>"Войти"}

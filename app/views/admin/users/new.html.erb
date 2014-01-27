@@ -1,0 +1,13 @@
+<% if flash[:notice] %>
+    <div class="alert">
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+      <%= flash[:notice] %>
+    </div>
+<% end %>
+
+<fieldset>
+  <legend>Register</legend>
+
+  <%= render :partial => 'form' %>
+
+</fieldset>

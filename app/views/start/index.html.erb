@@ -1,0 +1,163 @@
+<div class="container">
+  <div class="starter-template">
+    <div class="row">
+
+      <%= render :partial => 'welcome/menu' %>
+      <div class="col-md-8 col-lg-8">
+        <div class="block-main-small">
+
+          <% if @mquestion %>
+
+              <h1>Вопрос Дня</h1>
+
+              <div class="block-question">
+                <p class="mt10"><%= @mquestion.question %></p>
+
+                <div class="switcher mt5">
+                  <input type="radio" id="q1" name="group1" value="1" checked>
+
+                  <label for="q1"><%= @mquestion.answer1 %></label>
+                </div>
+                <div class="switcher mt5">
+                  <input type="radio" id="q2" name="group1" value="2">
+
+                  <label for="q2"><%= @mquestion.answer2 %></label>
+                </div>
+                <div class="switcher mt5">
+                  <input type="radio" id="q3" name="group1" value="3">
+
+                  <label for="q3"><%= @mquestion.answer3 %></label>
+                </div>
+                <div class="switcher mt5">
+                  <input type="radio" id="q4" name="group1" value="4">
+
+                  <label for="q4"><%= @mquestion.answer4 %></label>
+                </div>
+                <div class="switcher mt5">
+                  <input type="radio" id="q5" name="group1" value="5">
+
+                  <label for="q5"><%= @mquestion.answer5 %></label>
+                </div>
+                <%= submit_tag '', class: ' btn-i-know mt10 submit_form' %>
+              </div>
+              <div class="pull-left">
+                <div class="block-img-border">
+                  <div class="img-border"></div>
+                  <img src="/img/tmp1.png" alt="">
+                </div>
+              </div>
+          <% else %>
+              <h1>Нет добавленных вопросов на сегодня.</h1>
+          <% end %>
+        </div>
+      </div>
+      <div class="col-md-4 col-lg-4">
+        <div class="block-right-part">
+          <div class="title-winners"></div>
+          <ul class="list-winners white mt5">
+            <li>Филимонов Миша, Москва</li>
+            <li>Плотников Костя, Орел</li>
+            <li>Петрова Лена, Самара</li>
+          </ul>
+          <a class="btn-all-winners mt10" href="#"></a>
+
+          <div class="clearfix"></div>
+          <div class="block-vk mt30">
+            <script type="text/javascript" src="//vk.com/js/api/openapi.js?101"></script>
+            <div id="vk_groups"></div>
+            <script type="text/javascript">
+                VK.Widgets.Group("vk_groups", {mode: 0, width: "280", height: "220", color1: "#ccdb96", color2: "#5b6d48", color3: "#28345d"}, 22541528);
+            </script>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div id="question" class="popup questionnaire" style="display: none; top:0">
+  <div class="popup-form">
+    <h1>Анкета участника</h1>
+
+    <p class="mt20">Чтобы принять участие в акции, зарегистрируйтесь, пожалуйста.</p>
+    <%= form_for(@member, :url => '/#', method: :get, remote: true, html: {:id => 'new_member_form'}) do |f| %>
+
+
+        <div class="row mt20">
+
+
+          <div class="col-md-4 col-lg-4">
+            <div class="form-group has-warning">
+              <%= f.text_field :name, placeholder: 'Имя', class: 'form-control' %>
+              <!--<input type="text" placeholder="Имя" class="form-control">-->
+            </div>
+          </div>
+          <div class="col-md-4 col-lg-4">
+            <div class="form-group">
+              <!--<input type="text" placeholder="Фамилия" class="form-control">-->
+
+              <%= f.text_field :soname, placeholder: 'Фамилия', :class => "form-control" %>
+
+            </div>
+          </div>
+          <div class="col-md-4 col-lg-4">
+            <div class="form-group has-warning">
+              <select name='member[age]' class="form-control">
+                <% @age_list.each do |key, value| %>
+                    <option value="<%= key %>"><%= value %></option>
+                <% end %>
+              </select>
+
+            </div>
+          </div>
+        </div>
+        <div class="row mt5">
+          <div class="col-md-6 col-lg-6">
+            <div class="form-group">
+              <%= f.text_field :city, placeholder: 'Город проживания', :class => "form-control" %>
+
+              <!--<input type="text" placeholder="Город проживания" class="form-control">-->
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-6">
+            <div class="form-group">
+              <%= f.text_field :country, placeholder: 'Страна проживания', :class => "form-control" %>
+
+              <!--<input type="text" placeholder="Страна проживания" class="form-control">-->
+            </div>
+          </div>
+        </div>
+        <div class="row mt5">
+          <div class="col-md-6 col-lg-6">
+            <div class="form-group">
+              <%= f.telephone_field :phone, placeholder: 'Номер телефона', :class => "form-control" %>
+
+              <!--<input type="text" placeholder="Номер телефона" class="form-control">-->
+            </div>
+          </div>
+        </div>
+        <div class="row mt5">
+          <div class="col-md-6 col-lg-6">
+            <div class="form-group has-warning">
+              <%= f.email_field :mail, placeholder: 'Электронная почта', :class => "form-control" %>
+              <!--<input type="text" placeholder="Электронная почта" class="form-control">-->
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 col-lg-12 mt30">
+            <div class="switcher check mt20 pull-left">
+              <!--<input type="checkbox" id="agree" name="agree" class="pull-left">-->
+              <%= check_box_tag 'accept', '1', :class => "pull-left" %>
+
+              <label for="accept" class="pull-left">С <a href="#" class="modal-terms">условиями конкурса</a>
+                ознакомлен(а)</label>
+            </div>
+            <%= f.submit '', :class => 'submit_btn btn-next mt10 pull-right' %>
+            <!--<a class="btn-next mt10 pull-right" href="#"></a>-->
+          </div>
+        </div>
+    <%- end %>
+  </div>
+</div>

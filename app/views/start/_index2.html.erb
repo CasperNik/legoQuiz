@@ -1,0 +1,80 @@
+<H1>Спасибо за ответ!</H1>
+<h3>А теперь квадроцикл. Абсолютно бесплатно!!!!</h3>
+
+<button class="button2" onclick="javascript:question2()">Принять участие!</button>
+
+
+
+<div id="question2" style="display:none; cursor: default">
+  <div class="wrap_form">
+    <h1>Конкурсный вопрос</h1>
+    <h3>Кто твой любимый герой мира Чимы и почему?</h3>
+    <%= form_for(@member, :url => '/#', :method => :get, html: {class: "q2"}) do |f| %>
+
+        <%= text_area_tag 'description', "Твой ответ на вопрос", rows: 7, cols:35 %> <br/>
+        <%= f.text_field :phone, placeholder:'#{@member.phone}' %>
+        <p>
+        <%= check_box_tag 'accept', '1' %>
+        <%= label_tag 'condition', 'С условиями конкурса ознакомлен(а)' %>
+        </p>
+        <input name="member[id]" type="hidden" value=<%=  @member.id %>>
+        <%= f.submit 'Отправить', :class=>'submit_btn2'  %>
+    <% end %>
+
+  </div>
+</div>
+<style type="text/css">
+    .faild {border-color:red !important;}
+</style>
+<script type="text/javascript">
+    function question2(){
+        $.blockUI({message:$('#question2'), css: { width: '500px', height:"500", top:'10%'}});
+        return false;
+    }
+
+    $('.submit_btn2').click(function(){
+        $('.q2').validate({
+            submitHandler: function(form){
+                $.unblockUI();
+                $.ajax({
+                    type: "POST",
+                    url: "/start/quest2",
+                    data: $('.q2').serialize(),
+                    dataType: "html"
+                }).done(function(data){
+
+                            $('.content_wrap').html(data);
+                        })
+            },
+
+            success: "valid",
+            errorClass: "faild",
+            rules: {
+                'description':{required:true, minlength: 10},
+                'accept':{required:true},
+                'member[phone]':{required:true, digits:true, minlength:11}
+            },
+            messages: {
+                'description': {
+                    required: "Поле не может быть пустым.",
+                    minlength: "Трубуется минимум {0} символов"
+                },
+                'member[phone]':{
+                    required:'Поле не может быть пустым',
+                    digits: 'Введите корретный номер',
+                    minlength: 'Формат: 81234567891'
+                },
+                'accept': {
+                    required:'Условия обязательны'
+                }
+            }
+        });
+
+    })
+    // textarea во втором поле
+    $('#description').maxlength({
+        maxCharacters: 1000,
+        slider: false
+
+    });
+</script>
